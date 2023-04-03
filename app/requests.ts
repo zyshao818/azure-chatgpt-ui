@@ -57,6 +57,7 @@ export function requestOpenaiClient(path: string) {
 
 export async function requestChat(messages: Message[]) {
   const req: ChatRequest = makeRequestParam(messages, { filterBot: true });
+  console.log("[RequestChat] ", req);
 
   const res = await requestOpenaiClient("v1/chat/completions")(req);
 
@@ -101,12 +102,13 @@ export async function requestChatStream(
     filterBot: options?.filterBot,
   });
 
-  // valid and assign model config
-  if (options?.modelConfig) {
-    Object.assign(req, filterConfig(options.modelConfig));
-  }
+  console.log("[RequestChatStream] ", req);
 
-  console.log("[Request] ", req);
+  //No need to assign model in the param for Azure Open AI Rest API
+  // valid and assign model config
+  // if (options?.modelConfig) {
+  //   Object.assign(req, filterConfig(options.modelConfig));
+  // }
 
   const controller = new AbortController();
   const reqTimeoutId = setTimeout(() => controller.abort(), TIME_OUT_MS);
@@ -138,6 +140,7 @@ export async function requestChatStream(
       options?.onController?.(controller);
 
       while (true) {
+        console.log("Now in ChatStream loop");
         // handle time out, will stop if no response in 10 secs
         const resTimeoutId = setTimeout(() => finish(), TIME_OUT_MS);
         const content = await reader?.read();
@@ -155,7 +158,7 @@ export async function requestChatStream(
 
       finish();
     } else if (res.status === 401) {
-      console.error("Anauthorized");
+      console.error("Unauthorized");
       responseText = Locale.Error.Unauthorized;
       finish();
     } else {

@@ -17,7 +17,7 @@ import {
   useChatStore,
   Theme,
   ALL_MODELS,
-  useUpdateStore,
+  // useUpdateStore,
   useAccessStore,
 } from "../store";
 import { Avatar, PromptHints } from "./home";
@@ -25,7 +25,7 @@ import { Avatar, PromptHints } from "./home";
 import Locale, { AllLangs, changeLang, getLang } from "../locales";
 import { getCurrentVersion } from "../utils";
 import Link from "next/link";
-import { UPDATE_URL } from "../constant";
+// import { UPDATE_URL } from "../constant";
 import { SearchService, usePromptStore } from "../store/prompt";
 import { requestUsage } from "../requests";
 
@@ -58,18 +58,18 @@ export function Settings(props: { closeSettings: () => void }) {
     ],
   );
 
-  const updateStore = useUpdateStore();
-  const [checkingUpdate, setCheckingUpdate] = useState(false);
-  const currentId = getCurrentVersion();
-  const remoteId = updateStore.remoteId;
-  const hasNewVersion = currentId !== remoteId;
+  // const updateStore = useUpdateStore();
+  // const [checkingUpdate, setCheckingUpdate] = useState(false);
+  // const currentId = getCurrentVersion();
+  // const remoteId = updateStore.remoteId;
+  // const hasNewVersion = currentId !== remoteId;
 
-  function checkUpdate(force = false) {
-    setCheckingUpdate(true);
-    updateStore.getLatestCommitId(force).then(() => {
-      setCheckingUpdate(false);
-    });
-  }
+  // function checkUpdate(force = false) {
+  //   setCheckingUpdate(true);
+  //   updateStore.getLatestCommitId(force).then(() => {
+  //     setCheckingUpdate(false);
+  //   });
+  // }
 
   const [usage, setUsage] = useState<{
     granted?: number;
@@ -91,7 +91,7 @@ export function Settings(props: { closeSettings: () => void }) {
   }
 
   useEffect(() => {
-    checkUpdate();
+    // checkUpdate();
     checkUsage();
   }, []);
 
@@ -145,7 +145,7 @@ export function Settings(props: { closeSettings: () => void }) {
       </div>
       <div className={styles["settings"]}>
         <List>
-          <SettingItem title={Locale.Settings.Avatar}>
+          {/* <SettingItem title={Locale.Settings.Avatar}>
             <Popover
               onClose={() => setShowEmojiPicker(false)}
               content={
@@ -167,9 +167,9 @@ export function Settings(props: { closeSettings: () => void }) {
                 <Avatar role="user" />
               </div>
             </Popover>
-          </SettingItem>
+          </SettingItem> */}
 
-          <SettingItem
+          {/* <SettingItem
             title={Locale.Settings.Update.Version(currentId)}
             subTitle={
               checkingUpdate
@@ -192,7 +192,7 @@ export function Settings(props: { closeSettings: () => void }) {
                 onClick={() => checkUpdate(true)}
               />
             )}
-          </SettingItem>
+          </SettingItem> */}
 
           <SettingItem title={Locale.Settings.SendKey}>
             <select
@@ -279,7 +279,7 @@ export function Settings(props: { closeSettings: () => void }) {
             ></input>
           </SettingItem>
         </List>
-        <List>
+        {/* <List>
           <SettingItem
             title={Locale.Settings.Prompt.Disable.Title}
             subTitle={Locale.Settings.Prompt.Disable.SubTitle}
@@ -309,9 +309,9 @@ export function Settings(props: { closeSettings: () => void }) {
               onClick={() => showToast(Locale.WIP)}
             />
           </SettingItem>
-        </List>
+        </List> */}
         <List>
-          {enabledAccessControl ? (
+          {/* {enabledAccessControl ? (
             <SettingItem
               title={Locale.Settings.AccessCode.Title}
               subTitle={Locale.Settings.AccessCode.SubTitle}
@@ -327,9 +327,9 @@ export function Settings(props: { closeSettings: () => void }) {
             </SettingItem>
           ) : (
             <></>
-          )}
+          )} */}
 
-          <SettingItem
+          {/* <SettingItem
             title={Locale.Settings.Token.Title}
             subTitle={Locale.Settings.Token.SubTitle}
           >
@@ -341,9 +341,9 @@ export function Settings(props: { closeSettings: () => void }) {
                 accessStore.updateToken(e.currentTarget.value);
               }}
             ></input>
-          </SettingItem>
+          </SettingItem> */}
 
-          <SettingItem
+          {/* <SettingItem
             title={Locale.Settings.Usage.Title}
             subTitle={
               loadingUsage
@@ -363,7 +363,7 @@ export function Settings(props: { closeSettings: () => void }) {
                 onClick={checkUsage}
               />
             )}
-          </SettingItem>
+          </SettingItem> */}
 
           <SettingItem
             title={Locale.Settings.HistoryCount.Title}
@@ -385,7 +385,7 @@ export function Settings(props: { closeSettings: () => void }) {
             ></input>
           </SettingItem>
 
-          <SettingItem
+          {/* <SettingItem
             title={Locale.Settings.CompressThreshold.Title}
             subTitle={Locale.Settings.CompressThreshold.SubTitle}
           >
@@ -402,11 +402,11 @@ export function Settings(props: { closeSettings: () => void }) {
                 )
               }
             ></input>
-          </SettingItem>
+          </SettingItem> */}
         </List>
 
         <List>
-          <SettingItem title={Locale.Settings.Model}>
+          {/* <SettingItem title={Locale.Settings.Model}>
             <select
               value={config.modelConfig.model}
               onChange={(e) => {
@@ -422,7 +422,7 @@ export function Settings(props: { closeSettings: () => void }) {
                 </option>
               ))}
             </select>
-          </SettingItem>
+          </SettingItem> */}
           <SettingItem
             title={Locale.Settings.Temperature.Title}
             subTitle={Locale.Settings.Temperature.SubTitle}

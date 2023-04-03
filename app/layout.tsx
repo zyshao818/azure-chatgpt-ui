@@ -2,25 +2,30 @@
 import "./styles/globals.scss";
 import "./styles/markdown.scss";
 import "./styles/prism.scss";
-import process from "child_process";
+// import process from "child_process";
 import { ACCESS_CODES, IS_IN_DOCKER } from "./api/access";
 
 let COMMIT_ID: string | undefined;
-try {
-  COMMIT_ID = process
-    // .execSync("git describe --tags --abbrev=0")
-    .execSync("git rev-parse --short HEAD")
-    .toString()
-    .trim();
-} catch (e) {
-  console.error("No git or not from git repo.");
-}
+
+const TITLE = process.env.NEXT_PUBLIC_TITLE ?? "Jarvis";
+const DESCRIPTION =
+  process.env.NEXT_PUBLIC_SUBTITLE ?? "Using GPT-4 Azure Open AI Service.";
+
+// try {
+//   COMMIT_ID = process
+//     // .execSync("git describe --tags --abbrev=0")
+//     .execSync("git rev-parse --short HEAD")
+//     .toString()
+//     .trim();
+// } catch (e) {
+//   console.error("No git or not from git repo.");
+// }
 
 export const metadata = {
-  title: "ChatGPT Next Web",
-  description: "Your personal ChatGPT Chat Bot.",
+  title: TITLE,
+  description: DESCRIPTION,
   appleWebApp: {
-    title: "ChatGPT Next Web",
+    title: TITLE,
     statusBarStyle: "black-translucent",
   },
   themeColor: "#fafafa",

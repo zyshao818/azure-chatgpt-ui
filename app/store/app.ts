@@ -290,11 +290,12 @@ export const useChatStore = create<ChatStore>()(
       },
 
       onNewMessage(message) {
+        console.log("Get New Message: ", message);
         get().updateCurrentSession((session) => {
           session.lastUpdate = new Date().toLocaleString();
         });
-        get().updateStat(message);
-        get().summarizeSession();
+        // get().updateStat(message);
+        // get().summarizeSession();
       },
 
       async onUserInput(content) {

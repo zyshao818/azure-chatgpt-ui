@@ -13,6 +13,7 @@ import SendWhiteIcon from "../icons/send-white.svg";
 import BrainIcon from "../icons/brain.svg";
 import ExportIcon from "../icons/export.svg";
 import BotIcon from "../icons/bot.svg";
+import UserIcon from "../icons/user-svg.svg";
 import AddIcon from "../icons/add.svg";
 import DeleteIcon from "../icons/delete.svg";
 import LoadingIcon from "../icons/three-dots.svg";
@@ -65,11 +66,13 @@ export function Avatar(props: { role: Message["role"] }) {
     return <BotIcon className={styles["user-avtar"]} />;
   }
 
-  return (
-    <div className={styles["user-avtar"]}>
-      <Emoji unified={config.avatar} size={18} />
-    </div>
-  );
+  return <UserIcon className={styles["user-avtar"]} />;
+
+  // return (
+  //   <div className={styles["user-avtar"]}>
+  //     <Emoji unified={config.avatar} size={18} />
+  //   </div>
+  // );
 }
 
 export function ChatItem(props: {
@@ -313,7 +316,7 @@ export function Chat(props: {
               role: "user",
               content: userInput,
               date: new Date().toLocaleString(),
-              preview: true,
+              preview: false, // No preview for user input
             },
           ]
         : [],
@@ -374,7 +377,7 @@ export function Chat(props: {
               onClick={props?.showSideBar}
             />
           </div>
-          <div className={styles["window-action-button"]}>
+          {/* <div className={styles["window-action-button"]}>
             <IconButton
               icon={<BrainIcon />}
               bordered
@@ -383,7 +386,7 @@ export function Chat(props: {
                 showMemoryPrompt(session);
               }}
             />
-          </div>
+          </div> */}
           <div className={styles["window-action-button"]}>
             <IconButton
               icon={<ExportIcon />}
@@ -627,9 +630,13 @@ export function Home() {
         className={styles.sidebar + ` ${showSideBar && styles["sidebar-show"]}`}
       >
         <div className={styles["sidebar-header"]}>
-          <div className={styles["sidebar-title"]}>ChatGPT Next</div>
+          <div className={styles["sidebar-title"]}>
+            {" "}
+            {process.env.NEXT_PUBLIC_TITLE ?? "Jarvis"}
+          </div>
           <div className={styles["sidebar-sub-title"]}>
-            Build your own AI assistant.
+            {process.env.NEXT_PUBLIC_SUB_TITLE ??
+              "Using GPT-4 in Azure OpenAI Service"}
           </div>
           <div className={styles["sidebar-logo"]}>
             <ChatGptIcon />

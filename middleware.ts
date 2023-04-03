@@ -15,18 +15,20 @@ export function middleware(req: NextRequest) {
   console.log("[Auth] got access code:", accessCode);
   console.log("[Auth] hashed access code:", hashedCode);
 
-  if (ACCESS_CODES.size > 0 && !ACCESS_CODES.has(hashedCode) && !token) {
-    return NextResponse.json(
-      {
-        error: true,
-        needAccessCode: true,
-        msg: "Please go settings page and fill your access code.",
-      },
-      {
-        status: 401,
-      },
-    );
-  }
+  //NO NEED to process access code.
+
+  // if (ACCESS_CODES.size > 0 && !ACCESS_CODES.has(hashedCode) && !token) {
+  //   return NextResponse.json(
+  //     {
+  //       error: true,
+  //       needAccessCode: true,
+  //       msg: "Please go settings page and fill your access code.",
+  //     },
+  //     {
+  //       status: 401,
+  //     },
+  //   );
+  // }
 
   // inject api key
   if (!token) {

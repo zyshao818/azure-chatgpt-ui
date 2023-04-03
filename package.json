@@ -1,12 +1,11 @@
 {
-  "name": "chatgpt-next-web",
-  "version": "1.1",
+  "name": "azure-chatgpt-ui",
+  "version": "0.1",
   "private": false,
-  "license": "Anti 996",
   "scripts": {
     "dev": "yarn fetch && next dev",
     "build": "yarn fetch && next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "next lint",
     "fetch": "node ./scripts/fetch-prompts.mjs",
     "prepare": "husky install"
