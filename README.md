@@ -50,6 +50,12 @@ Subtitle in the chat window
 
 ![title](static/env-title.png)
 
+- CODE (optional)
+
+Access code to protect the connection to Azure OpenAI Service. If this environment variable is set during deployment, the correct access code should be filled int the setting window:
+
+![code](static/env-code.png)
+
 ### Local Development 
 
 1. Install latest nodejs and yarn.
