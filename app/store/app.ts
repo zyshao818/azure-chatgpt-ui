@@ -382,6 +382,16 @@ export const useChatStore = create<ChatStore>()(
           recentMessages.unshift(memoryPrompt);
         }
 
+        //Add system prompt
+        const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT?.toString() ?? "";
+        const systemMessage: Message = {
+          content: SYSTEM_PROMPT,
+          role: "system",
+          date: "",
+        };
+
+        recentMessages.unshift(systemMessage);
+
         return recentMessages;
       },
 
