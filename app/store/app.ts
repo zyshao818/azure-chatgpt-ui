@@ -383,9 +383,8 @@ export const useChatStore = create<ChatStore>()(
         }
 
         //Add system prompt
-        const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT?.toString() ?? "";
         const systemMessage: Message = {
-          content: SYSTEM_PROMPT,
+          content: `${process.env.NEXT_PUBLIC_SYSTEM_PROMPT}`,
           role: "system",
           date: "",
         };
