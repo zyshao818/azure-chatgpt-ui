@@ -383,13 +383,15 @@ export const useChatStore = create<ChatStore>()(
         }
 
         //Add system prompt
-        const systemMessage: Message = {
-          content: `${process.env.NEXT_PUBLIC_SYSTEM_PROMPT}`,
-          role: "system",
-          date: "",
-        };
+        if (process.env.NEXT_PUBLIC_SYSTEM_PROMPT != undefined) {
+          const systemMessage: Message = {
+            content: `${process.env.NEXT_PUBLIC_SYSTEM_PROMPT}`,
+            role: "system",
+            date: "",
+          };
 
-        recentMessages.unshift(systemMessage);
+          recentMessages.unshift(systemMessage);
+        }
 
         return recentMessages;
       },
