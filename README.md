@@ -14,7 +14,7 @@ Deploy Chatbot Application using GPT4 in Azure Open AI Service
 - Export chat history with full Markdown support
 
 ## Roadmap
-- [ ] System Role/Message for initial instructions for models
+- [ - ] System Role/Message for initial instructions for models
 
 
 ## Get Started
