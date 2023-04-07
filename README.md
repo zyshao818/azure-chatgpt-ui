@@ -54,6 +54,10 @@ Access code to protect the connection to Azure OpenAI Service. If this environme
 
 ![code](static/env-code.png)
 
+- NEXT_PUBLIC_SYSTEM_PROMPT (optional)
+
+Set up System Prompt for all conversations.
+
 ### Local Development 
 
 1. Install latest nodejs and yarn.
