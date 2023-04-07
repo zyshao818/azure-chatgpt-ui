@@ -9,6 +9,7 @@ import CopyIcon from "../icons/copy.svg";
 import DownloadIcon from "../icons/download.svg";
 import LoadingIcon from "../icons/three-dots.svg";
 import BotIcon from "../icons/bot.svg";
+import UserIcon from "../icons/user-svg.svg"; //Use this for user avatar instead of emoji
 import AddIcon from "../icons/add.svg";
 import DeleteIcon from "../icons/delete.svg";
 
@@ -59,11 +60,13 @@ export function Avatar(props: { role: Message["role"] }) {
     return <BotIcon className={styles["user-avtar"]} />;
   }
 
-  return (
-    <div className={styles["user-avtar"]}>
-      <Emoji unified={config.avatar} size={18} getEmojiUrl={getEmojiUrl} />
-    </div>
-  );
+  return <UserIcon className={styles["user-avtar"]} />;
+
+  // return (
+  //   <div className={styles["user-avtar"]}>
+  //     <Emoji unified={config.avatar} size={18} getEmojiUrl={getEmojiUrl} />
+  //   </div>
+  // );
 }
 
 function exportMessages(messages: Message[], topic: string) {
