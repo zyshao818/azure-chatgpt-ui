@@ -477,6 +477,10 @@ export const useChatStore = create<ChatStore>()(
           recentMessages.unshift(systemMessage);
         }
 
+        // const recentMessages = context.concat(
+        //   messages.slice(Math.max(0, n - config.historyMessageCount)),
+        // );
+
         return recentMessages;
       },
 

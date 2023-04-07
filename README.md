@@ -16,9 +16,7 @@ Deploy Chatbot Application using GPT4 in Azure Open AI Service
 ## Roadmap
 - [ - ] System Role/Message for initial instructions for models
 
-
 ## Get Started
-
 ### Environment Variables
 
 Need to prepare following environment variables. Suggest to use Azure Portal to retrieve related information.
