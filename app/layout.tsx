@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import "./styles/globals.scss";
 import "./styles/markdown.scss";
-import "./styles/prism.scss";
-// import process from "child_process";
+import "./styles/highlight.scss";
+//import process from "child_process";
 import { ACCESS_CODES, IS_IN_DOCKER } from "./api/access";
 
 let COMMIT_ID: string | undefined;
@@ -57,6 +57,11 @@ export default function RootLayout({
         <meta
           name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta
+          name="theme-color"
+          content="#151515"
+          media="(prefers-color-scheme: dark)"
         />
         <Meta />
         <link rel="manifest" href="/site.webmanifest"></link>
